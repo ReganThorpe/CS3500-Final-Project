@@ -11,9 +11,9 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_StoreDB';
   <head>
     <meta charset="utf-8">
     <title>Our Web Store</title>
-    <link type="text/css" href="all.css" />
-    <link type="text/css" href="index.css" />
-    <link type="text/css" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="all.css" />
+    <link type="text/css" rel="stylesheet" href="index.css" />
   </head>
   <body>
     <?php include 'header.inc.php'; ?>

@@ -11,9 +11,12 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_StoreDB';
   <head>
     <meta charset="utf-8">
     <title></title>
+		<link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="all.css" />
+		<link type="text/css" rel="stylesheet" href="login.css" />
   </head>
   <body>
-    <?php include 'header'; ?>
+    <?php include 'header.inc.php'; ?>
 		<form class="login" action="login.php" method="post">
 			<label>Username: </label>
 			<input type="text" class="form-control" id="username" />

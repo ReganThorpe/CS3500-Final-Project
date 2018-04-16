@@ -1,22 +1,18 @@
 <header>
-    <div class="navbar navbar-default ">
-      <div class="container">
-         <nav>
-           <div class="navbar-header">
-             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-             </button>
-             <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-book"></span> "Under Construction" Construction </a>
-           </div>
-           <div class="navbar-collapse collapse navbar-right">
-             <ul class="nav navbar-nav">
-               <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-             </ul>
-           </div><!-- end navbar collapse -->
-
-        </nav>
-      </div>
-    </div>  <!-- end navbar -->
+  <div class="navbar navbar-default ">
+    <div class="container">
+      <nav class="navbar navbar-inverse navbar-wrapper head">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="catalog.php">Catalog</a></li>
+            <li><a href="cart.php">Cart</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
 </header>
