@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,12 +8,12 @@
     <title>Our Web Store</title>
     <link type="text/css" href="all.css" />
     <link type="text/css" href="index.css" />
-    <link type="text/css" href="https://bootswatch.com/3/cosmo/bootstrap.min.css"/>
+    <link type="text/css" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
     <p>
-      This is type 3 for our <a href="https://cs3500wmu.000webhostapp.com/final_project_100.php">cs3500</a> project.<br />It is tentatively a shop for ships
+      This is type 3 for our <a href="https://cs3500wmu.000webhostapp.com/final_project_100.php">cs3500</a> project.<br />It is a shop for construction gear
     </p>
     <p>
       *Insert 3 wide grid here*
