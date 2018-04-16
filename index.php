@@ -18,5 +18,6 @@
     <p>
       *Insert 3 wide grid here*
     </p>
+    <?php include footer.inc.php ?>
   </body>
 </html>
