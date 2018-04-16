@@ -23,6 +23,6 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_StoreDB';
     <p>
       *Insert 3 wide grid here*
     </p>
-    <?php include footer.inc.php ?>
+    <?php include 'footer.inc.php'; ?>
   </body>
 </html>

@@ -8,10 +8,13 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_StoreDB';
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Product Page</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <?php include 'header'; ?>
 
-</body>
+    <?php include 'footer.inc.php'; ?>
+  </body>
 </html>
