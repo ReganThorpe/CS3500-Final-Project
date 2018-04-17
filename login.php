@@ -1,13 +1,14 @@
 <?php
 session_start();
 
-$user = "team14user";
-$pass = "This is fine";
+$user = 'team14user';
+$pass = 'This is fine';
 $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
 
 if (isset($_GET['logout'])) {
 	unset($_SESSION['username']);
   unset($_SESSION['UID']);
+	unset($_SESSION['name']);
 }
 
 try{
@@ -31,16 +32,62 @@ catch(PDOException $e){
   <body>
     <?php include 'header.inc.php'; ?>
 		<div class="container">
-			<form class="login" action="login.php" method="post">
-				<label>Username: </label>
-				<input type="text" class="form-control" id="username" /><br />
-				<label>Password: </label>
-				<input type="password" class="form-control" id="pass1" /><br />
-				<label>Verify Password: </label>
-				<input type="password" class="form-control" id="pass2" /><br />
-				<button type="submit" class="btn btn-primary">Login</button>
-			</form><br />
-		</div>
+		   <div class="row">
+		     <div class="col-md-12">
+		      <div class="panel panel-danger spaceabove">
+		       <div class="panel-heading"><h3>User Login</h3></div>
+		       <div class="panel-body">
+		        <div class="row">
+		          <div class=col-md-12>
+		            <?php
+		            if (isset($_POST['email']) && isset($_POST['pwd'])) {
+
+		              try{
+		                $sql = "SELECT * FROM User WHERE Email = ? AND Password = ?";
+
+		                $query = $pdo->prepare($sql);
+		                $query->bindValue(1, $_POST['email']);
+		                $query->bindValue(2, $_POST['pwd']);
+		                $query->execute();
+
+		                while ($row = $query->fetch()) {
+		                  $_SESSION['UID'] = $row['UID'];
+		                  $_SESSION['name'] = utf8_encode($row['FirstName']." ".$row['LastName']);
+		                  $_SESSION['username'] = $row['Username'];
+		                }
+		                header("Location: index.php");
+		                die();
+		              }
+		              catch(PDOException $e){
+		                die($e->getMessage());
+		              }
+		            }
+		            ?>
+		            <form action="login.php" method="post">
+		              <div class="form-group">
+		                <label for="email">Email:</label>
+		                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		              </div>
+		              <div class="form-group">
+		                <label for="pwd">Password:</label>
+		                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+		              </div>
+		              <button type="submit" class="btn btn-primary">Login</button>
+		            </form>
+
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+
+		</div>  <!-- end main content column -->
+		</div>  <!-- end main content row -->
+		</div>   <!-- end container -->
+
+
+
 		<div class="container">
 			<h5>Don't have an account? <a href="register.php">Sign up for free!</h5></p>
 		</div>
