@@ -2,7 +2,7 @@
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="row">
-        <img src="images/ree.png">
+        <img src="images/ree.png" class="logomain">
       </div>
       <nav class="navbar navbar-inverse navbar-wrapper head">
         <div class="container">
