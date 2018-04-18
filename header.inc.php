@@ -6,7 +6,8 @@ padding: 15px;
 }
 .right{
   float: right;
-  padding-top: 75px;
+  padding-top: 85px;
+
 }
 .left{
   float: left;
@@ -17,7 +18,9 @@ padding: 15px;
   font-weight: bold;
 }
 .bump{
-  margin-top: 15px;
+}
+li{
+  font-size: 20px;
 }
 </style>
 
@@ -25,13 +28,10 @@ padding: 15px;
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="col-md-12">
-<<<<<<< HEAD
       
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
-=======
 
       <nav class="navbar navbar-inverse navbar-wrapper head">
->>>>>>> f08dea27315d5d7bd3cec136361a5871e2374258
         <div class="row" >
         <div class="col-md-6">
           <img src="images/DG.png" class="logomain left">

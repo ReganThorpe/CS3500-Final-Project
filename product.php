@@ -91,6 +91,7 @@ catch(PDOException $e){
         <div class="col-md-6 panel panel-primary">
           <div class="row">
           <?php echo "<h1 class='title'>".$product['Name']."</h1>"?>
+          <?php echo "<h2 class='description'>".$product['Description']."</h2>"?>
           </div>
         </div>
       </div>
