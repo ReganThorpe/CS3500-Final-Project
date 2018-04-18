@@ -73,6 +73,17 @@ catch(PDOException $e){
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
+    <div class="container">
+      <div class="col-md-12">
+        <div class="row">
+          
+        </div>
+      </div>
+    </div>
+
+
+
+
 
     <?php include 'footer.inc.php'; ?>
   </body>
