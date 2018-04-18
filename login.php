@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-$user = 'team14user';
-$pass = 'This is fine';
-$connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
-
 if (isset($_GET['logout'])) {
 	unset($_SESSION['username']);
   unset($_SESSION['UID']);
 	unset($_SESSION['name']);
 }
+
+$user = 'team14user';
+$pass = 'This is fine';
+$connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
 
 try{
 	$pdo = new PDO($connStr,$user, $pass);
@@ -25,9 +25,9 @@ catch(PDOException $e){
   <head>
     <meta charset="utf-8">
     <title>Log In</title>
-		<link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
-		<link type="text/css" rel="stylesheet" href="all.css" />
-		<link type="text/css" rel="stylesheet" href="login.css" />
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="css/all.css" />
+		<link type="text/css" rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
@@ -89,7 +89,7 @@ catch(PDOException $e){
 
 
 		<div class="container">
-			<h5>Don't have an account? <a href="register.php">Sign up for free!</h5></p>
+			<h5>Don't have an account? <a href="register.php">Sign up for free</a>!</h5></p>
 		</div>
 
     <?php include 'footer.inc.php'; ?>
