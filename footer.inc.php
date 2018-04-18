@@ -21,9 +21,6 @@
 .contain{
 	margin-bottom:0px; 
 }
-footer{
-	height: 25px;
-}
 </style>
 <footer>
 	<div class="navbar navbar-default contain">
