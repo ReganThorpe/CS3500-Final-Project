@@ -3,7 +3,7 @@
 height: 150px;
 width: auto;
 padding: 15px;
-}  
+}
 .right{
   float: right;
   padding-top: 75px;
@@ -25,8 +25,13 @@ padding: 15px;
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="col-md-12">
+<<<<<<< HEAD
       
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
+=======
+
+      <nav class="navbar navbar-inverse navbar-wrapper head">
+>>>>>>> f08dea27315d5d7bd3cec136361a5871e2374258
         <div class="row" >
         <div class="col-md-6">
           <img src="images/DG.png" class="logomain left">
@@ -35,14 +40,14 @@ padding: 15px;
 
           <div class="col-md-6 ">
           <ul class="nav navbar-nav right">
-            <li><a href="profile.php">$_SESSION['username']</a></li>
+            <?php echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>"; ?>
             <li><a href="catalog.php">Catalog</a></li>
             <li><a href="cart.php">Cart</a></li>
             <li><a href="login.php?logout=1">Logout</a></li>
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           </ul>
           </div>
-          
+
         </div>
       </nav>
     </div>

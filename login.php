@@ -14,6 +14,14 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
 try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+	if (isset($_POST['delete'])) {
+		$sql = "DELETE FROM `User` WHERE `User`.`UID` = ?";
+
+		$statement = $pdo->prepare($sql);
+		$statement->bindValue(1, $_SESSION['UID']);
+		$statement->execute();
+	}
 }
 catch(PDOException $e){
   	die($e->getMessage());

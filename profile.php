@@ -34,7 +34,7 @@ catch(PDOException $e){
     <title></title>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="css/all.css" />
-    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/profile.css" />
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
@@ -42,7 +42,13 @@ catch(PDOException $e){
       <div class="container">
         <?php
         echo "<h1>".$_SESSION['name']."'s Profile</h1>";
+        echo "<h4>Email: ".$profile['Email']."</h4>";
+        echo "<h4>Username: ".$profile['Username']."</h4>";
+        echo "<h4>Webcoin Balance: ".$profile['GiftCardBalance']."</h4><br />";
          ?>
+         <form class="" action="login.php" method="post">
+           <button type="submit" name="delete" id="delete">Delete Account</button>
+         </form>
       </div>
     </main>
     <?php include 'footer.inc.php'; ?>
