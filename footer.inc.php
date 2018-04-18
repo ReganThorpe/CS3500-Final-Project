@@ -1,39 +1,47 @@
 <style type="text/css">
 .leftpad{
 	float: left;
-	padding-top: 60px;
+	padding-top: 0px;
 	font-weight: bold;
+	color: white;
+	text-align:center;
 }
-.logomain{
-	height: 150px;
-	width: auto;
-	padding: 15px;
-}
+
 .copyright{
 	float: right;
-	color: red;
+	color: white;
+	text-align: center;
+	position: relative;
+	padding-top: 30px;
 
+}
+.meme{
+	text-align: center;
+}
+.contain{
+	margin-bottom:0px; 
+}
+footer{
+	height: 25px;
 }
 </style>
 <footer>
-	<div class="navbar navbar-default">
+	<div class="navbar navbar-default contain">
 		<div class="container">
 			<div class="col-md-12">
-				<nav class="navbar navbar-inverse navbar-wrapper head bump">
 					<div class="row" >
-						<div class="col-md-6">
+						<div class="col-md-6 ">
 							<a href="ree.html">
-							<img src="images/DG.png" class="logomain left" alt="logo.png" title="logo">
+								<h1 class="leftpad">Dmitri's Gases</h1>
 							</a>
-							<h1 class="leftpad">Dmitri's Gases</h1>
+							
 						</div>
 						<div class="col-md-6">
 							<nav>
-								<p class="copyright">&copy; Dmitri's Gases</p>
+								<p class="copyright">&copy; Dmitri's Gases 1869</p>
 							</div>
 						</nav>
 					</div>
-				</nav>
 			</div>
 		</div>
 	</div>

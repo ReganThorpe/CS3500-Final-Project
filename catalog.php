@@ -50,10 +50,16 @@ catch(PDOException $e){
     <ul>
     <?php
     foreach ($items as $key => $value) {
-      echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\"> ";
-      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a></li>";
+      echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\">";
+
+
+      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span>";
+      echo "<span class='pull-right glyphicon glyphicon-heart-empty'></span></a></li>";
     } ?>
     </ul>
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>
+<!-- 
+  echo "<a href=''><span class='label label-primary pull-right glyphicon glyphicon-heart'></span></a>";
+      echo "<span class='glyphicon glyphicon-heart-empty'></span>"; -->
