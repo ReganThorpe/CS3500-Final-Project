@@ -28,7 +28,12 @@ li{
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="col-md-12">
+<<<<<<< HEAD
       
+=======
+<<<<<<< HEAD
+
+>>>>>>> 95fd3139ed0c6eff2af9f6c785738f2d6be3d65d
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
 
       <nav class="navbar navbar-inverse navbar-wrapper head">
@@ -40,10 +45,12 @@ li{
 
           <div class="col-md-6 ">
           <ul class="nav navbar-nav right">
-            <?php echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>"; ?>
-            <li><a href="catalog.php">Catalog</a></li>
-            <li><a href="cart.php">Cart</a></li>
-            <li><a href="login.php?logout=1">Logout</a></li>
+            <?php if (isset($_SESSION['username'])) {
+              echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>";
+              echo "<li><a href=\"catalog.php\">Catalog</a></li>";
+              echo "<li><a href=\"cart.php\">Cart</a></li>";
+              echo "<li><a href=\"login.php?logout=1\">Logout</a></li>";
+            } ?>
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           </ul>
           </div>

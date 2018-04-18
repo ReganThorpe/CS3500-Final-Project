@@ -51,7 +51,7 @@ if ($_POST['email'] && $_POST['pwd']) {
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/yeti/bootstrap.min.css"/>
   <link type="text/css" rel="stylesheet" href="css/all.css" />
   <link type="text/css" rel="stylesheet" href="css/index.css" />
 </head>
