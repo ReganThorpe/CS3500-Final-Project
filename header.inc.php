@@ -7,7 +7,7 @@
       <nav class="navbar navbar-inverse navbar-wrapper head">
         <div class="container">
           <ul class="nav navbar-nav">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="profile.php">soooo much reeee</a></li>
             <li><a href="catalog.php">Catalog</a></li>
             <li><a href="cart.php">Cart</a></li>
             <li><a href="login.php?logout=1">logout</a></li>
