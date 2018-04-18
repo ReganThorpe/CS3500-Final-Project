@@ -21,6 +21,17 @@ try{
   $statement->execute();
 
   $profile = $statement->fetch();
+
+  $sql = "SELECT * FROM OrderDetails WHERE UID = ? ";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_SESSION['UID']);
+  $statement->execute();
+
+  while ($row = $statement->fetch()) {
+    $orders[] = $row;
+  }
+
 }
 catch(PDOException $e){
   	die($e->getMessage());
@@ -44,8 +55,15 @@ catch(PDOException $e){
         echo "<h1>".$_SESSION['name']."'s Profile</h1>";
         echo "<h4>Email: ".$profile['Email']."</h4>";
         echo "<h4>Username: ".$profile['Username']."</h4>";
-        echo "<h4>Webcoin Balance: ".$profile['GiftCardBalance']."</h4><br />";
+        echo "<h4>Webcoin Balance: ".$profile['GiftCardBalance']."</h4>";
          ?>
+         <h2>Your orders</h2>
+         <?php
+         foreach ($orders as $key => $value) {
+           echo "string";
+         }
+         ?>
+         <br />
          <form class="" action="login.php" method="post">
            <button type="submit" name="delete" id="delete">Delete Account</button>
          </form>
