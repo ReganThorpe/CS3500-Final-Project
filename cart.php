@@ -22,6 +22,7 @@ try{
 
   while ($row = $statement->fetch()) {
     $cart[] = $row;
+    unset($cart[0]);
   }
 }
 catch(PDOException $e){
@@ -43,10 +44,12 @@ catch(PDOException $e){
     <?php
     foreach ($cart as $key => $value) {
       $sql = "SELECT * FROM Product WHERE ProductID = ? ";
-
       $statement = $pdo->prepare($sql);
       $statement->bindValue(1, $value['ProductID']);
       $statement->execute();
+      $product = $statement->fetch();
+
+      echo "<h5>Product Name: </h5>".$product['Name'];
     }
      ?>
     <?php include 'footer.inc.php'; ?>
