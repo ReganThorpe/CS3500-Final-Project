@@ -91,7 +91,7 @@ catch(PDOException $e){
     <div class="col-md-12 ">
       <div class="col-md-4 panel panel-primary">
         <div class="row">
-          <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\">"; ?>
+          <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">"; ?>
         </div>
       </div>
       <div class="col-md-2"></div>
@@ -101,7 +101,7 @@ catch(PDOException $e){
         </div>
         <div class="panel-body panel-primary">
           <?php echo "<h2 class='description'>".$product['Description']."</h2>"?>
-          
+
         </div>
       </div>
     </div>

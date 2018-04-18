@@ -33,7 +33,7 @@ li{
       <nav class="navbar navbar-inverse navbar-wrapper head">
         <div class="row" >
         <div class="col-md-6">
-          <img src="images/DG.png" class="logomain left">
+          <img src="images/DG.png" class="logomain left" alt="logo.png" title="logo">
         <h1 class="leftpad">Dmitri's Gases</h1>
       </div>
 

@@ -13,7 +13,7 @@ catch(PDOException $e){
   die($e->getMessage());
 }
 
-if ($_POST['email'] && $_POST['pwd']) {
+if ($_POST['email'] && $_POST['pwd'] && $_POST['username']) {
     $sql = "INSERT INTO User (Username, Password, Email, FirstName, LastName, DateOfRegistration, GiftCardBalance) VALUES (?, ?, ?, ?, ?, ?, 500)";
 
     $pdo->beginTransaction();
@@ -40,6 +40,7 @@ if ($_POST['email'] && $_POST['pwd']) {
       $_SESSION['UID'] = $row['UID'];
       $_SESSION['name'] = utf8_encode($row['FirstName']." ".$row['LastName']);
       $_SESSION['username'] = $row['Username'];
+      $_SESSION['pwd'] = $row['Password'];
     }
     header("Location: index.php");
     die();
@@ -73,6 +74,9 @@ if ($_POST['email'] && $_POST['pwd']) {
       </div>
       <button type="submit" class="btn btn-primary">Sign Up!</button>
     </form>
+  </div>
+  <div class="container">
+    <p>Already Have an account? Click <a href="login.php">here</a> to log in!</p>
   </div>
   <?php include 'footer.inc.php'; ?>
 </body>

@@ -5,6 +5,12 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['username']);
   unset($_SESSION['UID']);
 	unset($_SESSION['name']);
+	unset($_SESSION['pwd']);
+}
+
+if (isset($_SESSION['username'])) {
+	header('Location:profile.php');
+  die();
 }
 
 $user = 'team14user';
@@ -15,7 +21,7 @@ try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-	if (isset($_POST['delete'])) {
+	if (isset($_POST['delete']) && $_POST['pwd'] == $_SESSION['pwd']) {
 		$sql = "DELETE FROM `User` WHERE `User`.`UID` = ?";
 
 		$statement = $pdo->prepare($sql);
@@ -62,6 +68,7 @@ catch(PDOException $e){
 		                  $_SESSION['UID'] = $row['UID'];
 		                  $_SESSION['name'] = utf8_encode($row['FirstName']." ".$row['LastName']);
 		                  $_SESSION['username'] = $row['Username'];
+		                  $_SESSION['pwd'] = $row['Password'];
 		                }
 		                header("Location: index.php");
 		                die();

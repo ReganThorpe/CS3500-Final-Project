@@ -14,13 +14,15 @@ try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-  $sql = "SELECT * FROM User WHERE UID = ? ";
+  $sql = "SELECT * FROM UserShoppingCart WHERE UID = ? ";
 
   $statement = $pdo->prepare($sql);
   $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
 
-  $cart = $statement->fetch();
+  while ($row = $statement->fetch()) {
+    $cart[] = $row;
+  }
 }
 catch(PDOException $e){
   	die($e->getMessage());
@@ -38,7 +40,15 @@ catch(PDOException $e){
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
+    <?php
+    foreach ($cart[] as $key => $value) {
+      $sql = "SELECT * FROM Product WHERE ProductID = ? ";
 
+      $statement = $pdo->prepare($sql);
+      $statement->bindValue(1, $value['ProductID']);
+      $statement->execute();
+    }
+     ?>
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>
