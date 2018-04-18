@@ -51,6 +51,7 @@ catch(PDOException $e){
     <?php
     foreach ($items as $key => $value) {
       echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\"> ";
+      echo "";
       echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a></li>";
     } ?>
     </ul>
