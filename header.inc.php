@@ -1,6 +1,9 @@
 <header>
   <div class="navbar navbar-default ">
     <div class="container">
+      <div class="row">
+        <img src="images/ree.png">
+      </div>
       <nav class="navbar navbar-inverse navbar-wrapper head">
         <div class="container">
           <ul class="nav navbar-nav">
