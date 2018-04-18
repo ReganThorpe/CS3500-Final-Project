@@ -22,39 +22,39 @@ try{
 
   $product = $statement->fetch();
 
-  $sql = "SELECT * FROM ProductFavorite WHERE ProductID = ?  & UID = ?";
+  // $sql = "SELECT * FROM ProductFavorite WHERE ProductID = ?  & UID = ?";
+  //
+  // $statement = $pdo->prepare($sql);
+  // $statement->bindValue(1, $_GET['id']);
+  // $statement->bindValue(2, $_SESSION['UID']);
+  // $statement->execute();
+  //
+  // $favorite = $statement->fetch();
 
-  $statement = $pdo->prepare($sql);
-  $statement->bindValue(1, $_GET['id']);
-  $statement->bindValue(2, $_SESSION['UID']);
-  $statement->execute();
+  // if (isset($favorite)) {
+  //   # code...
+  // }else {
+  //   # code...
+  // }
 
-  $favorite = $statement->fetch();
-
-  if ($favorite) {
-    # code...
-  }else {
-    # code...
-  }
-
-  $sql = "SELECT COUNT(*) FROM ProductRating WHERE ProductID = ?";
-
-  $voteNum = 0;
-
-  $statement = $pdo->prepare($sql);
-  $statement->bindValue(1, $_GET['id']);
-  $statement->execute();
-  $temp = $statement->fetch();
-  $voteNum = $temp[0];
-
-  $RatingAvg = 0;
-
-  $sql = "SELECT AVG(Rating) FROM ProductRating WHERE ProductID = ?";
-  $statement = $pdo->prepare($sql);
-  $statement->bindValue(1, $_GET['id']);
-  $statement->execute();
-  $temp = $statement->fetch();
-  $RatingAvg = $temp[0];
+  // $sql = "SELECT COUNT(*) FROM ProductRating WHERE ProductID = ?";
+  //
+  // $voteNum = 0;
+  //
+  // $statement = $pdo->prepare($sql);
+  // $statement->bindValue(1, $_GET['id']);
+  // $statement->execute();
+  // $temp = $statement->fetch();
+  // $voteNum = $temp[0];
+  //
+  // $RatingAvg = 0;
+  //
+  // $sql = "SELECT AVG(Rating) FROM ProductRating WHERE ProductID = ?";
+  // $statement = $pdo->prepare($sql);
+  // $statement->bindValue(1, $_GET['id']);
+  // $statement->execute();
+  // $temp = $statement->fetch();
+  // $RatingAvg = $temp[0];
 
 }
 catch(PDOException $e){
@@ -76,12 +76,9 @@ catch(PDOException $e){
 
 }
 .proimage{
-  height: 70%;
-  width: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  height: auto;
+  width: 21em;
+  margin: 10px;
   position: middle;
   vertical-align: middle;
 }
@@ -90,15 +87,17 @@ catch(PDOException $e){
   <?php include 'header.inc.php';?>
   <div class="container">
     <div class="col-md-12 ">
-      <div class="col-md-4 panel panel-primary">
-        <div class="row">
-          <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">"; ?>
-        </div>
+      <div class="col-md-4">
+          <div class="panel panel-primary">
+            <div class="panel-body">
+              <?php echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">"; ?>
+            </div>
+          </div>
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-6 panel-primary">
         <div class="row  panel-heading panel-primary">
-          <?php echo "<h1 class='title'>".$product['Name']."</h1>"?>
+          <?php echo "<h1 class='title panel-body'>".$product['Name']."</h1>"?>
         </div>
         <div class="panel-body panel-primary">
           <?php echo "<h2 class='description'>".$product['Description']."</h2>"?>
