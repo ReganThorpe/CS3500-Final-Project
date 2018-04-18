@@ -13,6 +13,14 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
 try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+  $sql = "SELECT * FROM User WHERE UID = ? ";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_SESSION['UID']);
+  $statement->execute();
+
+  $cart = $statement->fetch();
 }
 catch(PDOException $e){
   	die($e->getMessage());

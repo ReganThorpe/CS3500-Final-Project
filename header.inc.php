@@ -28,12 +28,6 @@ li{
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="col-md-12">
-<<<<<<< HEAD
-      
-=======
-<<<<<<< HEAD
-
->>>>>>> 95fd3139ed0c6eff2af9f6c785738f2d6be3d65d
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
 
       <nav class="navbar navbar-inverse navbar-wrapper head">

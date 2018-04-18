@@ -6,6 +6,9 @@ if (!$_SESSION['username']) {
   die();
 }
 
+header('Location:profile.php');
+die();
+
 $user = "team14user";
 $pass = "This is fine";
 $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
