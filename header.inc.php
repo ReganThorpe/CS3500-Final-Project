@@ -3,7 +3,7 @@
 height: 150px;
 width: auto;
 padding: 15px;
-}  
+}
 .right{
   float: right;
   padding-top: 75px;
@@ -22,7 +22,7 @@ padding: 15px;
   <div class="navbar navbar-default ">
     <div class="container">
       <div class="col-md-12">
-      
+
       <nav class="navbar navbar-inverse navbar-wrapper head">
         <div class="row" >
         <div class="col-md-6">
@@ -32,14 +32,14 @@ padding: 15px;
 
           <div class="col-md-6 ">
           <ul class="nav navbar-nav right">
-            <li><a href="profile.php">$_SESSION['username']</a></li>
+            <?php echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>"; ?>
             <li><a href="catalog.php">Catalog</a></li>
             <li><a href="cart.php">Cart</a></li>
             <li><a href="login.php?logout=1">Logout</a></li>
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           </ul>
           </div>
-          
+
         </div>
       </nav>
     </div>
