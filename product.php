@@ -2,7 +2,7 @@
 session_start();
 
 if (!$_SESSION['username']) {
-  header('Location:login.php');
+  header('Location:landing.php');
   die();
 }
 
@@ -67,9 +67,9 @@ catch(PDOException $e){
   <head>
     <meta charset="utf-8">
     <title></title>
-		<link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/united/bootstrap.min.css"/>
-		<link type="text/css" rel="stylesheet" href="all.css" />
-		<link type="text/css" rel="stylesheet" href="product.css" />
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="css/all.css" />
+		<link type="text/css" rel="stylesheet" href="css/product.css" />
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
