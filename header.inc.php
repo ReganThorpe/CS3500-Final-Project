@@ -18,6 +18,7 @@ padding: 15px;
   font-weight: bold;
 }
 .bump{
+  margin-top: 25px;
 }
 li{
   font-size: 20px;
@@ -30,7 +31,7 @@ li{
       <div class="col-md-12">
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
 
-      <nav class="navbar navbar-inverse navbar-wrapper head">
+
         <div class="row" >
         <div class="col-md-6">
           <img src="images/DG.png" class="logomain left" alt="logo.png" title="logo">
@@ -50,7 +51,8 @@ li{
           </div>
 
         </div>
-      </nav>
+      
+    </nav>
     </div>
     </div>
   </div>

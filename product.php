@@ -72,17 +72,18 @@ catch(PDOException $e){
   <link type="text/css" rel="stylesheet" href="css/product.css" />
 </head>
 <style type="text/css">
-/*.imgdiv{
-  display: inline-block;
-  vertical-align: middle;
-}*/
+.imgdiv{
+
+}
 .proimage{
-  height: auto;
-  width: 100%;
+  height: 70%;
+  width: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  position: middle;
+  vertical-align: middle;
 }
 </style>
 <body>

@@ -40,13 +40,20 @@ catch(PDOException $e){
 		<link type="text/css" rel="stylesheet" href="css/all.css" />
 		<link type="text/css" rel="stylesheet" href="css/catalog.css" />
   </head>
+  <style type="text/css">
+    .bullet{
+      list-style-type: none;
+    }
+  </style>
   <body>
     <?php include 'header.inc.php'; ?>
+    <ul>
     <?php
     foreach ($items as $key => $value) {
-      echo "<a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\"> ";
-      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a>";
+      echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\"> ";
+      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a></li>";
     } ?>
+    </ul>
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>

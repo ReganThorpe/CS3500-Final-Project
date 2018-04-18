@@ -41,7 +41,7 @@ catch(PDOException $e){
   <body>
     <?php include 'header.inc.php'; ?>
     <?php
-    foreach ($cart[] as $key => $value) {
+    foreach ($cart as $key => $value) {
       $sql = "SELECT * FROM Product WHERE ProductID = ? ";
 
       $statement = $pdo->prepare($sql);
