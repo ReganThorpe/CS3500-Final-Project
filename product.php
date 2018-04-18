@@ -58,49 +58,59 @@ try{
 
 }
 catch(PDOException $e){
-  	die($e->getMessage());
+ die($e->getMessage());
 }
 
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-		<link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/yeti/bootstrap.min.css"/>
-		<link type="text/css" rel="stylesheet" href="css/all.css" />
-		<link type="text/css" rel="stylesheet" href="css/product.css" />
-  </head>
-  <style type="text/css">
-    .proimage{
-      height: 650px;
-      width: auto;
-      padding-left: 75px;
-      padding-right: auto;
-    }
-  </style>
-  <body>
-    <?php include 'header.inc.php';?>
-    <div class="container">
-      <div class="col-md-12 ">
-        <div class="col-md-6 panel panel-primary">
-          <div class="row">
-            <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\">"; ?>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/yeti/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="css/all.css" />
+  <link type="text/css" rel="stylesheet" href="css/product.css" />
+</head>
+<style type="text/css">
+/*.imgdiv{
+  display: inline-block;
+  vertical-align: middle;
+}*/
+.proimage{
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+</style>
+<body>
+  <?php include 'header.inc.php';?>
+  <div class="container">
+    <div class="col-md-12 ">
+      <div class="col-md-4 panel panel-primary">
+        <div class="row">
+          <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\">"; ?>
         </div>
-        <div class="col-md-6 panel panel-primary">
-          <div class="row">
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-6 panel-primary">
+        <div class="row  panel-heading panel-primary">
           <?php echo "<h1 class='title'>".$product['Name']."</h1>"?>
+        </div>
+        <div class="panel-body panel-primary">
           <?php echo "<h2 class='description'>".$product['Description']."</h2>"?>
-          </div>
+          
         </div>
       </div>
     </div>
+  </div>
 
 
 
 
 
-    <?php include 'footer.inc.php'; ?>
-  </body>
+  <?php include 'footer.inc.php'; ?>
+</body>
 </html>
