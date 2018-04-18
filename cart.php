@@ -38,20 +38,27 @@ catch(PDOException $e){
     <link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/yeti/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="css/all.css" />
     <link type="text/css" rel="stylesheet" href="css/cart.css" />
+    <style media="screen">
+      img {
+        margin-left: 35%;
+        margin-right: auto;
+      }
+    </style>
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
     <?php
-    foreach ($cart as $key => $value) {
-      $sql = "SELECT * FROM Product WHERE ProductID = ? ";
-      $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $value['ProductID']);
-      $statement->execute();
-      $product = $statement->fetch();
-
-      echo "<h5>Product Name: </h5>".$product['Name'];
-    }
+    // foreach ($cart as $key => $value) {
+    //   $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+    //   $statement = $pdo->prepare($sql);
+    //   $statement->bindValue(1, $value['ProductID']);
+    //   $statement->execute();
+    //   $product = $statement->fetch();
+    //
+    //   echo "<h5>Product Name: </h5>".$product['Name'];
+    // }
      ?>
+     <img src="images/putmycart.jpg" alt="mediocre meme" title="mediocre meme"/>
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>
