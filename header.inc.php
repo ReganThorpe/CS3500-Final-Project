@@ -26,7 +26,7 @@ padding: 15px;
     <div class="container">
       <div class="col-md-12">
 <<<<<<< HEAD
-      
+
       <nav class="navbar navbar-inverse navbar-wrapper head bump">
 =======
 
@@ -40,10 +40,12 @@ padding: 15px;
 
           <div class="col-md-6 ">
           <ul class="nav navbar-nav right">
-            <?php echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>"; ?>
-            <li><a href="catalog.php">Catalog</a></li>
-            <li><a href="cart.php">Cart</a></li>
-            <li><a href="login.php?logout=1">Logout</a></li>
+            <?php if (isset($_SESSION['username'])) {
+              echo "<li><a href=\"profile.php\">".$_SESSION['username']."</a></li>";
+              echo "<li><a href=\"catalog.php\">Catalog</a></li>";
+              echo "<li><a href=\"cart.php\">Cart</a></li>";
+              echo "<li><a href=\"login.php?logout=1\">Logout</a></li>";
+            } ?>
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
           </ul>
           </div>
