@@ -71,12 +71,27 @@ catch(PDOException $e){
 		<link type="text/css" rel="stylesheet" href="css/all.css" />
 		<link type="text/css" rel="stylesheet" href="css/product.css" />
   </head>
+  <style type="text/css">
+    .proimage{
+      height: 650px;
+      width: auto;
+      padding-left: 75px;
+      padding-right: auto; 
+    }
+  </style>
   <body>
-    <?php include 'header.inc.php'; ?>
+    <?php include 'header.inc.php';?>
     <div class="container">
-      <div class="col-md-12">
-        <div class="row">
-          
+      <div class="col-md-12 ">
+        <div class="col-md-6 panel panel-primary">
+          <div class="row">
+            <?php echo "<img class='proimage' src=\"images/".$product['ImagePath']."\">"; ?>
+          </div>
+        </div>
+        <div class="col-md-6 panel panel-primary">
+          <div class="row">
+          <?php echo "<h1 class='title'>".$product['Name']."</h1>"?>
+          </div>
         </div>
       </div>
     </div>

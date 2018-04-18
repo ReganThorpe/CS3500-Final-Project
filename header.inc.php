@@ -16,6 +16,9 @@ padding: 15px;
   padding-top: 60px;
   font-weight: bold;
 }
+.bump{
+  margin-top: 15px;
+}
 </style>
 
 <header>
@@ -23,7 +26,7 @@ padding: 15px;
     <div class="container">
       <div class="col-md-12">
       
-      <nav class="navbar navbar-inverse navbar-wrapper head">
+      <nav class="navbar navbar-inverse navbar-wrapper head bump">
         <div class="row" >
         <div class="col-md-6">
           <img src="images/DG.png" class="logomain left">
