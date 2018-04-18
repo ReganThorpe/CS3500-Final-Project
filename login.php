@@ -9,8 +9,8 @@ if (isset($_GET['logout'])) {
 }
 
 if (isset($_SESSION['username'])) {
-	header('Location:profile.php');
-  die();
+	header("Location:index.php");
+	die();
 }
 
 $user = 'team14user';
@@ -70,12 +70,12 @@ catch(PDOException $e){
 		                  $_SESSION['username'] = $row['Username'];
 		                  $_SESSION['pwd'] = $row['Password'];
 		                }
-		                header("Location: index.php");
-		                die();
 		              }
 		              catch(PDOException $e){
 		                die($e->getMessage());
 		              }
+						  header("Location: index.php");
+						  die();
 		            }
 		            ?>
 		            <form action="login.php" method="post">
