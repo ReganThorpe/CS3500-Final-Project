@@ -22,8 +22,13 @@ try{
 
   $product = $statement->fetch();
 
+  // $sql = "SELECT * FROM UserShoppingCart"
+  // $statement = $pdo->prepare($sql);
+  // $statement->execute();
+  // $cart = $statement->fetch();
+
   // $sql = "SELECT * FROM ProductFavorite WHERE ProductID = ?  & UID = ?";
-  //
+  
   // $statement = $pdo->prepare($sql);
   // $statement->bindValue(1, $_GET['id']);
   // $statement->bindValue(2, $_SESSION['UID']);
@@ -64,6 +69,16 @@ catch(PDOException $e){
 ?>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+  (document).ready(function(){
+    $("#cart").on('click',function(){
+      var qty = $('#qty').find(":selected").val();
+      console.log(qty);
+
+    })
+  })
+
+</script>
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -82,17 +97,24 @@ catch(PDOException $e){
   position: middle;
   vertical-align: middle;
 }
+#qty{
+  font-size: 20pt;
+}
+#cart{
+  margin-left: 50px;
+
+}
 </style>
 <body>
   <?php include 'header.inc.php';?>
   <div class="container">
     <div class="col-md-12 ">
       <div class="col-md-4">
-          <div class="panel panel-primary">
-            <div class="panel-body">
-              <?php echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">"; ?>
-            </div>
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <?php echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">"; ?>
           </div>
+        </div>
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-6 panel-primary">
@@ -102,6 +124,14 @@ catch(PDOException $e){
         <div class="panel-body panel-primary">
           <?php echo "<h2 class='description'>".$product['Description']."</h2>"?>
 
+          <div class="panel panel-body">
+            <label for="qty">Quantity</label>
+            <input type="number" id='qty' name="qty" min="1" max=<?php echo $product['UnitsInStorage']; ?>>
+            <?php echo $product['Price']; ?>
+            <button type="button" id="cart" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart">  </span>Add To Cart</button>
+
+
+          </div>
         </div>
       </div>
     </div>
