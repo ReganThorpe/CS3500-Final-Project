@@ -20,10 +20,11 @@ try{
   $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
 
+  $cart = array();
   while ($row = $statement->fetch()) {
     $cart[] = $row;
-    unset($cart[0]);
   }
+  unset($cart[0]);
 }
 catch(PDOException $e){
   	die($e->getMessage());
@@ -48,17 +49,24 @@ catch(PDOException $e){
   <body>
     <?php include 'header.inc.php'; ?>
     <?php
-    // foreach ($cart as $key => $value) {
-    //   $sql = "SELECT * FROM Product WHERE ProductID = ? ";
-    //   $statement = $pdo->prepare($sql);
-    //   $statement->bindValue(1, $value['ProductID']);
-    //   $statement->execute();
-    //   $product = $statement->fetch();
-    //
-    //   echo "<h5>Product Name: </h5>".$product['Name'];
-    // }
+    foreach ($cart as $key => $value) {
+      $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+      $statement = $pdo->prepare($sql);
+      $statement->bindValue(1, $value['ProductID']);
+      $statement->execute();
+      $product = $statement->fetch();
+
+      $total = $cart['UnitsInCart'] * $product['Price'];
+
+      echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+      echo "<h5>Product Name: </h5>".$product['Name'];
+      echo "<h4>Quantity: ".$cart['UnitsInCart']."</h4>";
+      echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
+      echo "<h4>Total Price: ".$total."</h4>";
+      echo "</div></div>";
+    }
      ?>
-     <img src="images/putmycart.jpg" alt="mediocre meme" title="mediocre meme"/>
+     <!-- <img src="images/putmycart.jpg" alt="mediocre meme" title="mediocre meme"/> -->
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>

@@ -14,6 +14,16 @@ try{
   $pdo = new PDO($connStr,$user, $pass);
   $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
+  if (isset($_POST['ProductID'])) {
+    $sql = "INSERT INTO ProductFavorite (UID, ProductID) VALUES (?, ?)";
+    $pdo->beginTransaction();
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $_SESSION['UID']);
+    $statement->bindValue(2, $_POST['id']);
+    $statement->execute();
+    $pdo->commit();
+  }
+
   $items[] = array();
 
   $sql = 'SELECT * FROM Product';
@@ -51,15 +61,16 @@ catch(PDOException $e){
     <?php
     foreach ($items as $key => $value) {
       echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\">";
-
-
-      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span>";
-      echo "<span class='pull-right glyphicon glyphicon-heart-empty'></span></a></li>";
+      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a>";
+      echo "<form action=\"catalog.php\" method=\"post\">";
+      echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
+      echo "<button type=\"submit\" class=\"btn btn-primary\"><span class='pull-right glyphicon glyphicon-heart-empty'></span></button>";
+      echo "</form></li>";
     } ?>
     </ul>
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>
-<!-- 
+<!--
   echo "<a href=''><span class='label label-primary pull-right glyphicon glyphicon-heart'></span></a>";
       echo "<span class='glyphicon glyphicon-heart-empty'></span>"; -->

@@ -29,7 +29,27 @@ try{
   $statement->execute();
 
   while ($row = $statement->fetch()) {
-    $orders[] = $row;
+    $order[] = $row;
+  }
+
+  $sql = "SELECT * FROM ProductFavorite WHERE UID = ? ";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_SESSION['UID']);
+  $statement->execute();
+
+  while ($row = $statement->fetch()) {
+    $favorite[] = $row;
+  }
+
+  $sql = "SELECT * FROM UserShoppingCart WHERE UID = ? ";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_SESSION['UID']);
+  $statement->execute();
+
+  while ($row = $statement->fetch()) {
+    $cart[] = $row;
   }
 
 }
@@ -57,10 +77,53 @@ catch(PDOException $e){
         echo "<h4>Username: ".$profile['Username']."</h4>";
         echo "<h4>Webcoin Balance: ".$profile['GiftCardBalance']."</h4>";
          ?>
-         <h2>Your orders</h2>
+         <h2>Your Orders</h2>
          <?php
-         foreach ($orders as $key => $value) {
-           echo "string";
+         foreach ($order as $key => $value) {
+
+           $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+
+           $statement = $pdo->prepare($sql);
+           $statement->bindValue(1, $value['ProductID']);
+           $statement->execute();
+
+           $product = $statement->fetch();
+
+           echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+            echo "</div></div>";
+         }
+         ?>
+         <h2>Your Favorites</h2>
+         <?php
+         foreach ($favorite as $key => $value) {
+           $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+
+           $statement = $pdo->prepare($sql);
+           $statement->bindValue(1, $value['ProductID']);
+           $statement->execute();
+
+           $product = $statement->fetch();
+
+           echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+            echo "</div></div>";
+         }
+         ?>
+         <h2>Your Cart</h2>
+         <?php
+         foreach ($cart as $key => $value) {
+           $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+
+           $statement = $pdo->prepare($sql);
+           $statement->bindValue(1, $value['ProductID']);
+           $statement->execute();
+
+           $product = $statement->fetch();
+
+           echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+            echo "</div></div>";
          }
          ?>
          <br />

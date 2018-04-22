@@ -28,7 +28,7 @@ try{
   // $cart = $statement->fetch();
 
   // $sql = "SELECT * FROM ProductFavorite WHERE ProductID = ?  & UID = ?";
-  
+
   // $statement = $pdo->prepare($sql);
   // $statement->bindValue(1, $_GET['id']);
   // $statement->bindValue(2, $_SESSION['UID']);
@@ -88,7 +88,7 @@ catch(PDOException $e){
   <link type="text/css" rel="stylesheet" href="css/product.css" />
 </head>
 <style type="text/css">
-.imgdiv{
+/* .imgdiv{
 
 }
 .proimage{
@@ -97,7 +97,7 @@ catch(PDOException $e){
   margin: 10px;
   position: middle;
   vertical-align: middle;
-}
+}*/
 #qty{
   font-size: 20pt;
 }
