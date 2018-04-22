@@ -69,8 +69,9 @@ catch(PDOException $e){
 ?>
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-  (document).ready(function(){
+  $(document).ready(function(){
     $("#cart").on('click',function(){
       var qty = $('#qty').find(":selected").val();
       console.log(qty);
