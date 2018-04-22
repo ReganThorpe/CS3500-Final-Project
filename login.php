@@ -104,7 +104,7 @@ catch(PDOException $e){
 
 
 		<div class="container">
-			<h5>Don't have an account? <a href="register.php">Sign up for free</a>!</h5></p>
+			<h5>Don't have an account? <a href="register.php">Sign up for free</a>!</h5>
 		</div>
 
     <?php include 'footer.inc.php'; ?>

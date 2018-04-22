@@ -72,7 +72,7 @@ catch(PDOException $e){
   <link type="text/css" rel="stylesheet" href="css/product.css" />
 </head>
 <style type="text/css">
-.imgdiv{
+/* .imgdiv{
 
 }
 .proimage{
@@ -81,7 +81,7 @@ catch(PDOException $e){
   margin: 10px;
   position: middle;
   vertical-align: middle;
-}
+} */
 </style>
 <body>
   <?php include 'header.inc.php';?>

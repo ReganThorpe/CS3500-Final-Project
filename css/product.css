@@ -8,3 +8,13 @@
 	font-size: 25px;
 	text-align: center;
 }
+.imgdiv{
+
+}
+.proimage{
+  height: auto;
+  width: 21em;
+  margin: 10px;
+  position: middle;
+  vertical-align: middle;
+}
