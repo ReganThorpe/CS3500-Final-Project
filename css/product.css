@@ -18,3 +18,10 @@
   position: middle;
   vertical-align: middle;
 }
+#qty{
+  font-size: 20pt;
+}
+#cart{
+  margin-left: 50px;
+
+}
