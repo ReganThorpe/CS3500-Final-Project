@@ -70,16 +70,38 @@ catch(PDOException $e){
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<?php
+    $sql = "INSERT INTO UserShoppingCart(`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
+
+
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $_SESSION['UID']);
+    $statement->bindValue(2, $_SESSION['UID']);
+    $statement->bindValue(3, $_GET['id']);
+    $statement->bindValue(4, $qty);
+    $statement->execute();
+      
+
+?>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#cart").on('click',function(){
-      var qty = $('#qty').find(":selected").val();
+      var qty = $('#qty').val();
       console.log(qty);
+      // var ajaxurl= 'ajax.php', data = qty;
+      // $.post(ajaxurl, data, function() {
+            
+      // });
+      // $url = window.location.href;
+      // window.location = $url+"?qty="+$qty;
+
+      
 
     })
   })
 
 </script>
+
 <head>
   <meta charset="utf-8">
   <title></title>
@@ -137,10 +159,6 @@ catch(PDOException $e){
       </div>
     </div>
   </div>
-
-
-
-
 
   <?php include 'footer.inc.php'; ?>
 </body>
