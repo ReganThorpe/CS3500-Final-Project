@@ -1,6 +1,18 @@
 <?php
 session_start();
 
+
+    // $sql = "INSERT INTO UserShoppingCart(`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
+
+
+    // $statement = $pdo->prepare($sql);
+    // $statement->bindValue(1, $_SESSION['UID']);
+    // $statement->bindValue(2, $_SESSION['UID']);
+    // $statement->bindValue(3, $_GET['id']);
+    // $statement->bindValue(4, $qty);
+    // $statement->execute();
+      
+
 if (!$_SESSION['username']) {
   header('Location:landing.php');
   die();
