@@ -9,3 +9,8 @@ to login to the site itself
 url: team14store.xyz
 username: test@test.com
 password: abcd1234
+
+hosting
+url: sftp://team14store.xyz
+username: r_thorpe
+password: I don't even know
