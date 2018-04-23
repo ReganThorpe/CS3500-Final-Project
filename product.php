@@ -13,7 +13,7 @@ $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
 try{
   $pdo = new PDO($connStr,$user, $pass);
   $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
+  if(isset($_GET['points'])){
   if ($_GET['id'] && $_GET['points'] && $_GET['buy']) {
     $sql = "INSERT INTO ProductRating (ProductID, Rating, WouldBuyAgain, UID) VALUES (?, ?, ?, ?)";
     $pdo->beginTransaction();
@@ -25,7 +25,7 @@ try{
     $statement->execute();
     $pdo->commit();
   }
-
+}
   $sql = "SELECT * FROM Product WHERE ProductID = ? ";
 
   $statement = $pdo->prepare($sql);
@@ -70,8 +70,8 @@ try{
   $statement->bindValue(1, $_GET['id']);
   $statement->execute();
   $temp = $statement->fetch();
-  $voteNum = $temp[0];
-
+  $voteNum = $temp['COUNT(*)'];
+// print_r($temp);
   $RatingAvg = 0;
 
   $sql = "SELECT AVG(Rating) FROM ProductRating WHERE ProductID = ?";
@@ -79,7 +79,8 @@ try{
   $statement->bindValue(1, $_GET['id']);
   $statement->execute();
   $temp = $statement->fetch();
-  $RatingAvg = $temp[0];
+  
+  $RatingAvg = $temp['AVG(Rating)'];
 
   $true = 0;
 
@@ -88,8 +89,8 @@ try{
   $statement->bindValue(1, $_GET['id']);
   $statement->execute();
   $temp = $statement->fetch();
-  $true = $temp[0];
-
+  $true = $temp['COUNT(*)'];
+// print_r($temp);
   $false = 0;
 
   $sql = "SELECT COUNT(*) FROM ProductRating WHERE ProductID = ? & WouldBuyAgain = '0'";
@@ -97,8 +98,8 @@ try{
   $statement->bindValue(1, $_GET['id']);
   $statement->execute();
   $temp = $statement->fetch();
-  $false = $temp[0];
-
+  $false = $temp['COUNT(*)'];
+// print_r($temp);
 }
 catch(PDOException $e){
   die($e->getMessage());
