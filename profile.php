@@ -81,7 +81,7 @@ catch(PDOException $e){
         echo "<h1>".$_SESSION['name']."'s Profile</h1>";
         echo "<h4><em>Email: ".$profile['Email']."</em></h4>";
         echo "<h4><em>Username: ".$profile['Username']."</em></h4>";
-        echo "<h4><em>Webcoin Balance: ¤".$profile['GiftCardBalance']."</em></h4>";
+        echo "<h4><em>Webcoin Balance: &curren;".$profile['GiftCardBalance']."</em></h4>";
          ?>
          <br /><h3>Your Orders</h3><br />
          <?php
@@ -133,7 +133,7 @@ catch(PDOException $e){
            echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4>Product Name: ".$product['Name']."</h4>";
            echo "<h4>QTY: ".$value['UnitsInCart']."</h4>";
-           echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
+           echo "<h4>Price Per Unit: &curren;".$product['Price']."</h4>";
            echo "</a></div></div>";
          }
          ?>

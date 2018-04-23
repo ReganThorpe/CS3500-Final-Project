@@ -27,16 +27,16 @@ try{
     $statement->bindValue(2, $_GET['id']);
     $statement->bindValue(3, $_GET['qty']);
     $statement->execute();
-    echo 
-    '<script type="text/javascript"> 
+    echo
+    '<script type="text/javascript">
     $url = "cart.php";
     window.location=$url;</script>';
 
   }
 
   if (isset($_POST['id'])) {
-    echo 
-    '<script type="text/javascript"> 
+    echo
+    '<script type="text/javascript">
     $url = "cart.php";
     window.location=$url;</script>';
   }
@@ -64,10 +64,6 @@ catch(PDOException $e){
   <link type="text/css" rel="stylesheet" href="css/all.css" />
   <link type="text/css" rel="stylesheet" href="css/cart.css" />
   <style>
-      /* img {
-        margin-left: 35%;
-        margin-right: auto;
-        } */
         .center{
           text-align: center;
         }
@@ -95,10 +91,11 @@ catch(PDOException $e){
                 $product = $statement->fetch();
                 $total = $value['UnitsInCart'] * $product['Price'];
                 echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+                echo "<img src=\"images/".$product['ImagePath']."\"/> ";
                 echo "<h5>Product Name: </h5>".$product['Name'];
                 echo "<h4>Quantity: ".$value['UnitsInCart']."</h4>";
-                echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
-                echo "<h4>Total Price: ".$total."</h4>";
+                echo "<h4>Price Per Unit: &curren;".$product['Price']."</h4>";
+                echo "<h4>Total Price: &curren;".$total."</h4>";
                 $totalamt=$total + $totalamt;
                 $totalqty=$value['UnitsInCart']+$totalqty;
                 echo "</div></div>";
@@ -114,7 +111,7 @@ catch(PDOException $e){
            <div class="col-md-4">
             <div class="panel panel-primary ">
               <?php echo "<h2 class='center'>Total Items in Order: ".$totalqty."</h2>
-              <h2 class='center'> Total Price: ".$totalamt."</h2>
+              <h2 class='center'> Total Price: &curren;".$totalamt."</h2>
               <button type='submit' class='btn btn-warning centerbtn'>Checkout</button>";?>
             </div>
           </div>

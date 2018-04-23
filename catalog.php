@@ -102,7 +102,7 @@ strong {
             echo "<a href=\"product.php?id=".$value['ProductID']."\">";
             echo "<img src=\"images/".$value['ImagePath']."\"/> ";
             echo "<strong>".$value['Name']."</strong> In stock: ".$value['UnitsInStorage'];
-            echo " <span class=\"label label-primary pull-right price\">¤".$value['Price']." </span></a>";
+            echo " <span class=\"label label-primary pull-right price\">&curren;".$value['Price']." </span></a>";
             echo "</div><div class=\"col-md-4\">";
             echo "<form action=\"catalog.php\" method=\"post\">";
             echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
