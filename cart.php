@@ -1,16 +1,6 @@
 <?php
 session_start();
-
-
-    // $sql = "INSERT INTO UserShoppingCart(`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
-
-
-    // $statement = $pdo->prepare($sql);
-    // $statement->bindValue(1, $_SESSION['UID']);
-    // $statement->bindValue(2, $_SESSION['UID']);
-    // $statement->bindValue(3, $_GET['id']);
-    // $statement->bindValue(4, $qty);
-    // $statement->execute();
+   
       
 
 if (!$_SESSION['username']) {
@@ -34,11 +24,20 @@ try{
     $statement->execute();
 
   }
+   $sql = "INSERT INTO UserShoppingCart(`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
 
-  $sql = "SELECT * FROM UserShoppingCart WHERE UID = ? ";
+
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $_SESSION['UID']);
+    $statement->bindValue(2, $_SESSION['UID']);
+    $statement->bindValue(3, $_GET['id']);
+    $statement->bindValue(4, $_GET['qty']);
+    $statement->execute();
+
+  $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = 1";
 
   $statement = $pdo->prepare($sql);
-  $statement->bindValue(1, $_SESSION['UID']);
+  // $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
 
   $cart = array();
@@ -71,9 +70,9 @@ catch(PDOException $e){
     <?php include 'header.inc.php'; ?>
     <?php
     foreach ($cart as $key => $value) {
-      $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+      $sql = "SELECT * FROM Product WHERE ProductID = 1 ";
       $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $value['ProductID']);
+      // $statement->bindValue(1, $value['ProductID']);
       $statement->execute();
       $product = $statement->fetch();
 
