@@ -96,8 +96,9 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "";
+           echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
             echo "</div></div>";
+
          }
          ?>
          <h2>Your Favorites</h2>
@@ -112,24 +113,27 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "";
+           echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
             echo "</div></div>";
          }
          ?>
          <h2>Your Cart</h2>
          <?php
-         foreach ($cart as $key => $value) {
-           $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+           foreach ($cart as $key => $value) {
+             $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+             $statement = $pdo->prepare($sql);
+             $statement->bindValue(1, $value['ProductID']);
+             $statement->execute();
+             $product = $statement->fetch();
 
-           $statement = $pdo->prepare($sql);
-           $statement->bindValue(1, $value['ProductID']);
-           $statement->execute();
-
-           $product = $statement->fetch();
+             $total = $cart['UnitsInCart'] * $product['Price'];
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "";
-            echo "</div></div>";
+           echo "<h4>Product Name: ".$product['Name']."</h4>";
+           echo "<h5>Quantity: ".$cart['UnitsInCart']."</h5>";
+           echo "<h5>Price Per Unit: ".$product['Price']."</h5>";
+           echo "<h5>Total Price: ".$total."</h5>";
+           echo "</div></div>";
          }
          ?>
          <br />
