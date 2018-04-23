@@ -132,6 +132,7 @@ catch(PDOException $e){
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
            echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4>Product Name: ".$product['Name']."</h4>";
+           echo "<h5>QTY: ".$value['UnitsInCart']."</h5>";
            echo "<h5>Price Per Unit: ".$product['Price']."</h5>";
            echo "</a></div></div>";
          }
