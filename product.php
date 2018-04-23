@@ -70,30 +70,19 @@ catch(PDOException $e){
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<?php
-    $sql = "INSERT INTO UserShoppingCart(`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
 
-
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(1, $_SESSION['UID']);
-    $statement->bindValue(2, $_SESSION['UID']);
-    $statement->bindValue(3, $_GET['id']);
-    $statement->bindValue(4, $qty);
-    $statement->execute();
-      
-
-?>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#cart").on('click',function(){
-      var qty = $('#qty').val();
-      console.log(qty);
+      $qty = $('#qty').val();
+      $id = $('#id').text();
+      console.log($qty);
       // var ajaxurl= 'ajax.php', data = qty;
       // $.post(ajaxurl, data, function() {
             
       // });
-      // $url = window.location.href;
-      // window.location = $url+"?qty="+$qty;
+      $url = 'http://localhost/dmitri/cart.php';
+      window.location = $url+"?qty="+$qty+"&id="+$id;
 
       
 
@@ -152,6 +141,7 @@ catch(PDOException $e){
             <input type="number" id='qty' name="qty" min="1" max=<?php echo $product['UnitsInStorage']; ?>>
             <?php echo "¤".$product['Price']; ?>
             <button type="button" id="cart" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart">  </span>Add To Cart</button>
+            <span id='id' hidden><?php echo $_GET['id']; ?></span>
 
 
           </div>
