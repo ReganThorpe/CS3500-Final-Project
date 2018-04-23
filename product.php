@@ -79,12 +79,12 @@ catch(PDOException $e){
       console.log($qty);
       // var ajaxurl= 'ajax.php', data = qty;
       // $.post(ajaxurl, data, function() {
-            
+
       // });
-      $url = 'http://localhost/dmitri/cart.php';
+      $url = 'cart.php';
       window.location = $url+"?qty="+$qty+"&id="+$id;
 
-      
+
 
     })
   })
