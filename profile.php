@@ -79,11 +79,11 @@ catch(PDOException $e){
       <div class="container">
         <?php
         echo "<h1>".$_SESSION['name']."'s Profile</h1>";
-        echo "<h4>Email: ".$profile['Email']."</h4>";
-        echo "<h4>Username: ".$profile['Username']."</h4>";
-        echo "<h4>Webcoin Balance: ¤".$profile['GiftCardBalance']."</h4>";
+        echo "<h4><em>Email: ".$profile['Email']."</em></h4>";
+        echo "<h4><em>Username: ".$profile['Username']."</em></h4>";
+        echo "<h4><em>Webcoin Balance: ¤".$profile['GiftCardBalance']."</em></h4>";
          ?>
-         <h2>Your Orders</h2>
+         <br /><h3>Your Orders</h3><br />
          <?php
          foreach ($order as $key => $value) {
 
@@ -98,12 +98,12 @@ catch(PDOException $e){
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
            echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
-           echo "<h5>Quantity: ".$value['UnitsPurchased']."</h5>";
+           echo "<h4>Quantity: ".$value['UnitsPurchased']."</h4>";
             echo "</a></div></div>";
 
          }
          ?>
-         <h2>Your Favorites</h2>
+         <h3>Your Favorites</h3><br />
          <?php
          foreach ($favorite as $key => $value) {
            $sql = "SELECT * FROM Product WHERE ProductID = ? ";
@@ -116,11 +116,11 @@ catch(PDOException $e){
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
            echo "<a href=\"product.php?id=".$product['ProductID']."\">";
-           echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
+           echo "<h4 class='title panel-body'>".$product['Name']."</h4h4>";
             echo "</a></div></div>";
          }
          ?>
-         <h2>Your Cart</h2>
+         <h3>Your Cart</h3><br />
          <?php
            foreach ($cart as $key => $value) {
              $sql = "SELECT * FROM Product WHERE ProductID = ? ";
@@ -132,19 +132,21 @@ catch(PDOException $e){
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
            echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4>Product Name: ".$product['Name']."</h4>";
-           echo "<h5>QTY: ".$value['UnitsInCart']."</h5>";
-           echo "<h5>Price Per Unit: ".$product['Price']."</h5>";
+           echo "<h4>QTY: ".$value['UnitsInCart']."</h4>";
+           echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
            echo "</a></div></div>";
          }
          ?>
-         <br />
+         <!-- <br /> -->
          <form class="" action="login.php" method="post">
-           <label>Type your password and click Delete Account to remove your information from our servers</label><br />
-           <input type="password" id="pwd" name="pwd"/>
+           <label><h5>Type your password and click Delete Account to remove your information
+             from our servers&nbsp&nbsp</h5></label>
+           <input type="password" id="pwd" name="pwd"/><span>&nbsp&nbsp</span>
            <button type="submit" name="delete" id="delete" class="btn btn-danger">Delete Account</button>
          </form>
       </div>
     </main>
+    <br />
     <?php include 'footer.inc.php'; ?>
   </body>
 </html>
