@@ -18,7 +18,7 @@ try{
     $statement->bindValue(1, $_SESSION['UID']);
     $statement->execute();
   }
-   $sql = "INSERT INTO UserShoppingCart (`UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
+   $sql = "INSERT INTO UserShoppingCart (`UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?)";
    if (isset($_GET['id'])) {
 
     $statement = $pdo->prepare($sql);
@@ -26,7 +26,6 @@ try{
     $statement->bindValue(2, $_GET['id']);
     $statement->bindValue(3, $_GET['qty']);
     $statement->execute();
-    $pdo->commit();
 }
   $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = ".$_SESSION['UID'];
   $statement = $pdo->prepare($sql);
