@@ -24,19 +24,18 @@ try{
     $statement->execute();
 
   }
-   $sql = "INSERT INTO UserShoppingCart (`USCID`, `UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
+   $sql = "INSERT INTO UserShoppingCart (`UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
 
-
+   if (isset($_GET['id'])) {
+   
     $statement = $pdo->prepare($sql);
-    $statement->bindValue(1, $_SESSION['UID']);
-    $statement->bindValue(2, $_SESSION['UID']);
-    $statement->bindValue(3, $_GET['id']);
-    $statement->bindValue(4, $_GET['qty']);
+    $statement->bindValue(1, $_SESSION['UID']);;
+    $statement->bindValue(2, $_GET['id']);
+    $statement->bindValue(3, $_GET['qty']);
     $statement->execute();
-    // $pdo->commit();
-
-  $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = 1";
-
+    $pdo->commit();
+}
+  $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = ".$_SESSION['UID'];
   $statement = $pdo->prepare($sql);
   // $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
@@ -70,8 +69,10 @@ catch(PDOException $e){
   <body>
     <?php include 'header.inc.php'; ?>
     <?php
+
     foreach ($cart as $key => $value) {
-      $sql = "SELECT * FROM Product WHERE ProductID = 1 ";
+
+      $sql = "SELECT * FROM Product";
       $statement = $pdo->prepare($sql);
       // $statement->bindValue(1, $value['ProductID']);
       $statement->execute();
