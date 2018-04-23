@@ -96,8 +96,10 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
-            echo "</div></div>";
+           echo "<h5>Quantity: ".$value['UnitsPurchased']."</h5>";
+            echo "</a></div></div>";
 
          }
          ?>
@@ -113,8 +115,9 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4 class='title panel-body'>".$product['Name']."</h4>";
-            echo "</div></div>";
+            echo "</a></div></div>";
          }
          ?>
          <h2>Your Cart</h2>
@@ -126,14 +129,11 @@ catch(PDOException $e){
              $statement->execute();
              $product = $statement->fetch();
 
-             $total = $cart['UnitsInCart'] * $product['Price'];
-
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+           echo "<a href=\"product.php?id=".$product['ProductID']."\">";
            echo "<h4>Product Name: ".$product['Name']."</h4>";
-           echo "<h5>Quantity: ".$cart['UnitsInCart']."</h5>";
            echo "<h5>Price Per Unit: ".$product['Price']."</h5>";
-           echo "<h5>Total Price: ".$total."</h5>";
-           echo "</div></div>";
+           echo "</a></div></div>";
          }
          ?>
          <br />
