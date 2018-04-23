@@ -138,9 +138,9 @@ catch(PDOException $e){
 
           <div class="panel panel-body">
             <label for="qty">Quantity</label>
-            <input type="number" id='qty' name="qty" min="1" max=<?php echo $product['UnitsInStorage']; ?>>
+            <input type="number" id='qty' name="qty" value="1" min="1" max=<?php echo $product['UnitsInStorage']; ?>>
             <?php echo "¤".$product['Price']; ?>
-            <button type="button" id="cart" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart">  </span>Add To Cart</button>
+            <button type="sumbit" id="cart" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart">  </span>Add To Cart</button>
             <span id='id' hidden><?php echo $_GET['id']; ?></span>
 
 
