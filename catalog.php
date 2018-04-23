@@ -49,7 +49,9 @@ catch(PDOException $e){
   <link type="text/css" rel="stylesheet" href="https://bootswatch.com/3/yeti/bootstrap.min.css"/>
   <link type="text/css" rel="stylesheet" href="css/all.css" />
   <link type="text/css" rel="stylesheet" href="css/catalog.css" />
+  
 </head>
+
 <style type="text/css">
 .bullet{
   list-style-type: none;
@@ -64,16 +66,19 @@ catch(PDOException $e){
   background-color: #008CBA;
 }
 .butt{
-height: 50px;
-vertical-align: bottom;
-position: relative;
-display: inline-block;
-float: left;
-/* margin-bottom: 30px; */
+  height: 50px;
+  vertical-align: bottom;
+  position: relative;
+  display: inline-block;
+  float: left;
+  /* margin-bottom: 30px; */
 }
-img {
-  height: auto;
-  width: 40px;
+.pic {
+  max-height: 100px;
+  min-height: 50px;
+/*  min-width: 50px;
+max-width: 75px;*/
+width: 75px;
 }
 strong {
   font-size: 15pt;
@@ -100,26 +105,41 @@ strong {
           foreach ($items as $key => $value) {
             echo "<div class=\"row\"><div class=\"col-md-8 list-group-item\">";
             echo "<a href=\"product.php?id=".$value['ProductID']."\">";
-            echo "<img src=\"images/".$value['ImagePath']."\"/> ";
+            echo "<img class='pic' src=\"images/".$value['ImagePath']."\"/> ";
             echo "<strong>".$value['Name']."</strong> In stock: ".$value['UnitsInStorage'];
             echo " <span class=\"label label-primary pull-right price\">¤".$value['Price']." </span></a>";
             echo "</div><div class=\"col-md-4\">";
             echo "<form action=\"catalog.php\" method=\"post\">";
             echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
             // echo "In stock: ".$value['UnitsInStorage'];
-            echo "<button type=\"submit\" class=\"btn btn-primary butt\"><span class='pull-right glyphicon glyphicon-heart-empty '></span></button>&nbsp;";
+            echo "<button type=\"submit\" id=".$value['ProductID']." name=".$value['ProductID']." class=\"btn btn-primary butt\"><span class='pull-right glyphicon glyphicon-heart-empty '></span></button>&nbsp;";
             echo "<button type=\"submit\" class=\"btn btn-primary butt\"> Add to Cart</button>&nbsp;";
             echo "</form></div></div><br />";
-          } ?>
+          }
+          echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+          <script type='text/javascript'>
 
+            $('#'".$value['ProductID'].").on('click',function(){
+                $id = $('#'".$value['ProductID'].")
+                console.log(".$qty.");
+                ".$url." = 'catalog.php';
+                window.location = ".$url>"+'?id='+".$id.";
+              })
+            </script>";
+
+          ?>
+           
+
+          
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <?php include 'footer.inc.php'; ?>
-</body>
-</html>
+    <?php include 'footer.inc.php'; ?>
+  </body>
+  </html>
 <!--
   echo "<a href=''><span class='label label-primary pull-right glyphicon glyphicon-heart'></span></a>";
   echo "<span class='glyphicon glyphicon-heart-empty'></span>"; -->
