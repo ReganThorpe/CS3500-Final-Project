@@ -2,30 +2,23 @@
 session_start();
 
 
-
 if (!$_SESSION['username']) {
   header('Location:landing.php');
   die();
 }
-
 $user = "team14user";
 $pass = "This is fine";
 $connStr = 'mysql:host=mysql.team14store.xyz;dbname=cs3500_storedb';
-
 try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
   if (isset($_POST['nope'])) {
     $sql = "DELETE FROM `UserShoppingCart` WHERE `UserShoppingCart`.`UID` = ?";
-
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1, $_SESSION['UID']);
     $statement->execute();
-
   }
    $sql = "INSERT INTO UserShoppingCart (`UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?,?)";
-
    if (isset($_GET['id'])) {
 
     $statement = $pdo->prepare($sql);
@@ -39,7 +32,6 @@ try{
   $statement = $pdo->prepare($sql);
   // $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
-
   $cart = array();
   while ($row = $statement->fetch()) {
     $cart = $row;
@@ -49,7 +41,6 @@ try{
 catch(PDOException $e){
   	die($e->getMessage());
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,48 +51,29 @@ catch(PDOException $e){
     <link type="text/css" rel="stylesheet" href="css/all.css" />
     <link type="text/css" rel="stylesheet" href="css/cart.css" />
     <style media="screen">
-      img {
+      /* img {
         margin-left: 35%;
         margin-right: auto;
-      }
+      } */
     </style>
   </head>
   <body>
     <?php include 'header.inc.php'; ?>
     <?php
-
     foreach ($cart as $key => $value) {
-      $sql = "SELECT * FROM Product WHERE ProductID = ? ";
+      $sql = "SELECT * FROM Product";
       $statement = $pdo->prepare($sql);
-      $statement->bindValue(1, $value['ProductID']);
+      // $statement->bindValue(1, $value['ProductID']);
       $statement->execute();
       $product = $statement->fetch();
-
-    echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-    echo "<a href=\"product.php?id=".$product['ProductID']."\">";
-    echo "<h4>Product Name: ".$product['Name']."</h4>";
-    echo "<h5>Price Per Unit: ".$product['Price']."</h5>";
-    echo "</a></div></div>";
-  }
-
-
-    // foreach ($cart as $key => $value) {
-    //
-    //   $sql = "SELECT * FROM Product";
-    //   $statement = $pdo->prepare($sql);
-    //   // $statement->bindValue(1, $value['ProductID']);
-    //   $statement->execute();
-    //   $product = $statement->fetch();
-    //
-    //   $total = $cart['UnitsInCart'] * $product['Price'];
-    //
-    //   echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-    //   echo "<h5>Product Name: </h5>".$product['Name'];
-    //   echo "<h4>Quantity: ".$cart['UnitsInCart']."</h4>";
-    //   echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
-    //   echo "<h4>Total Price: ".$total."</h4>";
-    //   echo "</div></div>";
-    // }
+      $total = $cart['UnitsInCart'] * $product['Price'];
+      echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
+      echo "<h5>Product Name: </h5>".$product['Name'];
+      echo "<h4>Quantity: ".$cart['UnitsInCart']."</h4>";
+      echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
+      echo "<h4>Total Price: ".$total."</h4>";
+      echo "</div></div>";
+    }
      ?>
      <form class="" action="cart.php" method="post">
        <div class="form-group">
