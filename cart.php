@@ -14,6 +14,15 @@ try{
 	$pdo = new PDO($connStr,$user, $pass);
 	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
+  if (isset($_POST['nope'])) {
+    $sql = "DELETE FROM `UserShoppingCart` WHERE `UserShoppingCart`.`UID` = ?";
+
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $_SESSION['UID']);
+    $statement->execute();
+
+  }
+
   $sql = "SELECT * FROM UserShoppingCart WHERE UID = ? ";
 
   $statement = $pdo->prepare($sql);
@@ -40,10 +49,10 @@ catch(PDOException $e){
     <link type="text/css" rel="stylesheet" href="css/all.css" />
     <link type="text/css" rel="stylesheet" href="css/cart.css" />
     <style media="screen">
-      img {
+      /* img {
         margin-left: 35%;
         margin-right: auto;
-      }
+      } */
     </style>
   </head>
   <body>
@@ -66,6 +75,12 @@ catch(PDOException $e){
       echo "</div></div>";
     }
      ?>
+     <form class="" action="cart.php" method="post">
+       <div class="form-group">
+         <input type="hidden" id="nope" name="nope" value="nope" />
+         <button type="submit">Delete Cart</button>
+       </div>
+     </form>
      <!-- <img src="images/putmycart.jpg" alt="mediocre meme" title="mediocre meme"/> -->
     <?php include 'footer.inc.php'; ?>
   </body>

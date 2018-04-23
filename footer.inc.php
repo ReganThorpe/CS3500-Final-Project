@@ -19,7 +19,7 @@
 	text-align: center;
 }
 .contain{
-	margin-bottom:0px; 
+	margin-bottom:0px;
 }
 </style>
 <footer>
@@ -28,10 +28,10 @@
 			<div class="col-md-12">
 					<div class="row" >
 						<div class="col-md-6 ">
-							<a href="ree.html">
-								<h1 class="leftpad">Dmitri's Gases</h1>
+							<a href="ree.php">
+								<h4 class="leftpad">Dmitri's Gases</h4>
 							</a>
-							
+
 						</div>
 						<div class="col-md-6">
 							<nav>

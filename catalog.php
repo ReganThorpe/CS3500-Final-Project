@@ -61,10 +61,11 @@ catch(PDOException $e){
     <?php
     foreach ($items as $key => $value) {
       echo "<li class='bullet'><a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\">";
-      echo $value['Name']." <span class=\"label label-primary pull-right\"> ".$value['Price']." </span></a>";
+      echo $value['Name']." <span class=\"label label-primary pull-right\">¤".$value['Price']." </span></a>";
       echo "<form action=\"catalog.php\" method=\"post\">";
       echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
-      echo "<button type=\"submit\" class=\"btn btn-primary\"><span class='pull-right glyphicon glyphicon-heart-empty'></span></button>";
+      echo "<button type=\"submit\" class=\"btn btn-primary\"><span class='pull-right glyphicon glyphicon-heart-empty'></span></button>&nbsp;";
+      echo "In stock: ".$value['UnitsInStorage'];
       echo "</form></li>";
     } ?>
     </ul>

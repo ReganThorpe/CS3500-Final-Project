@@ -28,6 +28,8 @@ try{
   $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
 
+  $order = array();
+
   while ($row = $statement->fetch()) {
     $order[] = $row;
   }
@@ -38,6 +40,8 @@ try{
   $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
 
+  $favorite = array();
+
   while ($row = $statement->fetch()) {
     $favorite[] = $row;
   }
@@ -47,6 +51,8 @@ try{
   $statement = $pdo->prepare($sql);
   $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
+
+  $cart = array();
 
   while ($row = $statement->fetch()) {
     $cart[] = $row;
@@ -75,7 +81,7 @@ catch(PDOException $e){
         echo "<h1>".$_SESSION['name']."'s Profile</h1>";
         echo "<h4>Email: ".$profile['Email']."</h4>";
         echo "<h4>Username: ".$profile['Username']."</h4>";
-        echo "<h4>Webcoin Balance: ".$profile['GiftCardBalance']."</h4>";
+        echo "<h4>Webcoin Balance: ¤".$profile['GiftCardBalance']."</h4>";
          ?>
          <h2>Your Orders</h2>
          <?php
@@ -90,7 +96,7 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+           echo "";
             echo "</div></div>";
          }
          ?>
@@ -106,7 +112,7 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+           echo "";
             echo "</div></div>";
          }
          ?>
@@ -122,7 +128,7 @@ catch(PDOException $e){
            $product = $statement->fetch();
 
            echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
-           echo "<img class='proimage panel-body' src=\"images/".$product['ImagePath']."\" alt=\"".$product['Name'].".png\" title =\"".$product['Name']."\">";
+           echo "";
             echo "</div></div>";
          }
          ?>
