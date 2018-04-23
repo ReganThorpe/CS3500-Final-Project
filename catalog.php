@@ -65,14 +65,22 @@ catch(PDOException $e){
 }
 .butt{
 height: 50px;
-vertical-align: center;
+vertical-align: bottom;
 position: relative;
 display: inline-block;
-float: right;
+float: left;
 /* margin-bottom: 30px; */
 }
-form {
-  margin-bottom: 30px;
+img {
+  height: auto;
+  width: 40px;
+}
+strong {
+  font-size: 15pt;
+  vertical-align:top;
+}
+.list-group-item {
+  vertical-align:top;
 }
 </style>
 <body>
@@ -90,14 +98,18 @@ form {
         <div class="col-md-6">
           <?php
           foreach ($items as $key => $value) {
-            echo "<a href=\"product.php?id=".$value['ProductID']."\" class=\"list-group-item\">";
-            echo $value['Name']." <span class=\"label label-primary pull-right\">¤".$value['Price']." </span></a>";
+            echo "<div class=\"row\"><div class=\"col-md-8 list-group-item\">";
+            echo "<a href=\"product.php?id=".$value['ProductID']."\">";
+            echo "<img src=\"images/".$value['ImagePath']."\"/> ";
+            echo "<strong>".$value['Name']."</strong> In stock: ".$value['UnitsInStorage'];
+            echo " <span class=\"label label-primary pull-right price\">¤".$value['Price']." </span></a>";
+            echo "</div><div class=\"col-md-4\">";
             echo "<form action=\"catalog.php\" method=\"post\">";
             echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
-            echo "In stock: ".$value['UnitsInStorage'];
+            // echo "In stock: ".$value['UnitsInStorage'];
             echo "<button type=\"submit\" class=\"btn btn-primary butt\"><span class='pull-right glyphicon glyphicon-heart-empty '></span></button>&nbsp;";
             echo "<button type=\"submit\" class=\"btn btn-primary butt\"> Add to Cart</button>&nbsp;";
-            echo "</form>";
+            echo "</form></div></div><br />";
           } ?>
 
         </div>
