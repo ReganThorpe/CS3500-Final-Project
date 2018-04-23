@@ -141,7 +141,7 @@ catch(PDOException $e){
          <form class="" action="login.php" method="post">
            <label>Type your password and click Delete Account to remove your information from our servers</label><br />
            <input type="password" id="pwd" name="pwd"/>
-           <button type="submit" name="delete" id="delete">Delete Account</button>
+           <button type="submit" name="delete" id="delete" class="btn btn-danger">Delete Account</button>
          </form>
       </div>
     </main>
