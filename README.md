@@ -1,16 +1,20 @@
-Just a folder with all of the files, nothing particularly special about them.
+Useful information!
+-Is still not a fully functional website
+-Can add items to cart, database shows individual items, but cart on website is non-cooperative
+-Store was much more difficult than anticipated. We feel much greater in difficulty than the other 2
+-Favoriting and rating not working either
 
-to access the database:
+Database:
 url: http://phpmyadmin.dreamhost.com
 username: team14user
 password: This is fine
 
-to login to the site itself
+Site Test Account:
 url: team14store.xyz
 username: test@test.com
 password: abcd1234
 
-hosting
+Hosting:
 url: sftp://team14store.xyz
 username: r_thorpe
 password: I don't even know
