@@ -18,6 +18,7 @@ try{
     $statement->bindValue(1, $_SESSION['UID']);
     $statement->execute();
   }
+
    $sql = "INSERT INTO UserShoppingCart (`UID`, `ProductID`, `UnitsInCart`) VALUES (?,?,?)";
    if (isset($_GET['id'])) {
 
@@ -26,16 +27,29 @@ try{
     $statement->bindValue(2, $_GET['id']);
     $statement->bindValue(3, $_GET['qty']);
     $statement->execute();
+    echo 
+    '<script type="text/javascript"> 
+    $url = "cart.php";
+    window.location=$url;</script>';
+
 }
-  $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = ".$_SESSION['UID'];
+
+if (isset($_POST['id'])) {
+  echo 
+'<script type="text/javascript"> 
+$url = "cart.php";
+window.location=$url;</script>';
+}
+
+  $sql = "SELECT * FROM `UserShoppingCart` WHERE UID = ?";
   $statement = $pdo->prepare($sql);
-  // $statement->bindValue(1, $_SESSION['UID']);
+  $statement->bindValue(1, $_SESSION['UID']);
   $statement->execute();
   $cart = array();
   while ($row = $statement->fetch()) {
-    $cart = $row;
+    $cart[] = $row;
   }
-  unset($cart[0]);
+  // unset($cart[0]);
 }
 catch(PDOException $e){
   	die($e->getMessage());
@@ -60,15 +74,16 @@ catch(PDOException $e){
     <?php include 'header.inc.php'; ?>
     <?php
     foreach ($cart as $key => $value) {
-      $sql = "SELECT * FROM Product";
+      // echo "<script type='text/javascript'>alert('reeeeee');</script>";
+      $sql = "SELECT * FROM Product WHERE ProductID = ?";
       $statement = $pdo->prepare($sql);
-      // $statement->bindValue(1, $value['ProductID']);
+      $statement->bindValue(1, $value['ProductID']);
       $statement->execute();
       $product = $statement->fetch();
-      $total = $cart['UnitsInCart'] * $product['Price'];
+      $total = $value['UnitsInCart'] * $product['Price'];
       echo "<div class=\"panel panel-primary\"><div class=\"panel-body\">";
       echo "<h5>Product Name: </h5>".$product['Name'];
-      echo "<h4>Quantity: ".$cart['UnitsInCart']."</h4>";
+      echo "<h4>Quantity: ".$value['UnitsInCart']."</h4>";
       echo "<h4>Price Per Unit: ".$product['Price']."</h4>";
       echo "<h4>Total Price: ".$total."</h4>";
       echo "</div></div>";
