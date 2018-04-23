@@ -42,24 +42,32 @@ try{
   //   # code...
   // }
 
-  // $sql = "SELECT COUNT(*) FROM ProductRating WHERE ProductID = ?";
-  //
-  // $voteNum = 0;
-  //
-  // $statement = $pdo->prepare($sql);
-  // $statement->bindValue(1, $_GET['id']);
-  // $statement->execute();
-  // $temp = $statement->fetch();
-  // $voteNum = $temp[0];
-  //
-  // $RatingAvg = 0;
-  //
-  // $sql = "SELECT AVG(Rating) FROM ProductRating WHERE ProductID = ?";
-  // $statement = $pdo->prepare($sql);
-  // $statement->bindValue(1, $_GET['id']);
-  // $statement->execute();
-  // $temp = $statement->fetch();
-  // $RatingAvg = $temp[0];
+  $sql = "SELECT * FROM ProductRating WHERE ProductID = ? ";
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_GET['id']);
+  $statement->execute();
+
+  $rating = $statement->fetch();
+
+  $sql = "SELECT COUNT(*) FROM ProductRating WHERE ProductID = ?";
+
+  $voteNum = 0;
+
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_GET['id']);
+  $statement->execute();
+  $temp = $statement->fetch();
+  $voteNum = $temp[0];
+
+  $RatingAvg = 0;
+
+  $sql = "SELECT AVG(Rating) FROM ProductRating WHERE ProductID = ?";
+  $statement = $pdo->prepare($sql);
+  $statement->bindValue(1, $_GET['id']);
+  $statement->execute();
+  $temp = $statement->fetch();
+  $RatingAvg = $temp[0];
 
 }
 catch(PDOException $e){
@@ -142,8 +150,6 @@ catch(PDOException $e){
             <?php echo "¤".$product['Price']; ?>
             <button type="sumbit" id="cart" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart">  </span>Add To Cart</button>
             <span id='id' hidden><?php echo $_GET['id']; ?></span>
-
-
           </div>
         </div>
       </div>
