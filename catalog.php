@@ -69,6 +69,10 @@ vertical-align: center;
 position: relative;
 display: inline-block;
 float: right;
+/* margin-bottom: 30px; */
+}
+form {
+  margin-bottom: 30px;
 }
 </style>
 <body>
@@ -91,7 +95,6 @@ float: right;
             echo "<form action=\"catalog.php\" method=\"post\">";
             echo "<input type=\"hidden\" id=\"id\"  value=\"".$value['ProductID']."\">";
             echo "In stock: ".$value['UnitsInStorage'];
-
             echo "<button type=\"submit\" class=\"btn btn-primary butt\"><span class='pull-right glyphicon glyphicon-heart-empty '></span></button>&nbsp;";
             echo "<button type=\"submit\" class=\"btn btn-primary butt\"> Add to Cart</button>&nbsp;";
             echo "</form>";
